@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.yaya_diallo.gps.ReceiveGpsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="cliquez pour plus d'options"
+        android:id="@+id/textView_receivegps"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20px"/>
+
+    <ListView android:id="@+id/SMSList"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:divider="@color/colorPrimaryDark"
+        android:drawSelectorOnTop="true"
+        android:footerDividersEnabled="false"
+        android:layout_margin="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:layout_below="@+id/textView_receivegps"
+        />
+
+
+</RelativeLayout>

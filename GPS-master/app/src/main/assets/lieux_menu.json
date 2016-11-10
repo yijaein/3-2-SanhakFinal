@@ -1,0 +1,62 @@
+{
+  "menus": [
+    {
+      "id":"presidence",
+      "title": "Présidence de la République",
+      "image" : "sekoutoureyah",
+      "description" : "Le palais Sékoutoureyah",
+      "coordonnees" : "9.5089342,-13.7152004"
+    },
+    {
+      "id":"donka",
+      "title": "Donka",
+      "image" : "hopitaux",
+      "description" : "L'hôpital central",
+      "coordonnees" : "9.5349986,-13.6854321"
+    },
+
+    {
+      "id":"aeroport",
+      "title": "L'aéroport international",
+      "image" : "aeroport",
+      "description" : "Aéroport Conakry Gbessia",
+      "coordonnees" : "9.5569084,-13.6516475"
+    },
+
+    {
+      "id":"palaisdupeuple",
+      "title": "Le palais du peuple",
+      "image" : "palaisdupeuple",
+      "description" : "",
+      "coordonnees" : "9.52094721,-13.69279567"
+    },
+    {
+      "id":"ambassadedefrance",
+      "title": "L'ambassade de France",
+      "image" : "ambassadedefrance",
+      "description" : "L'ambassade de France en Guinée",
+      "coordonnees" : "9.51119086,-13.71471779"
+    },
+    {
+      "id":"ambassadeusa",
+      "title": "L'ambassade des Etats-Unis",
+      "image" : "ambassadeusa",
+      "description" : "L'ambassade des Etats-Unis en Guinée",
+      "coordonnees" : "9.59562292,-13.63542323"
+    },
+    {
+      "id":"primacenter",
+      "title": "Prima Center",
+      "image" : "primacenter",
+      "description" : "Hypermarché de Guinée",
+      "coordonnees" : "9.60268688,-13.63861299"
+    },
+    {
+      "id":"plazadiamant",
+      "title": "Plaza Diamant",
+      "image" : "plazadiamant",
+      "description" : "Pôle multifonctionnel en Guinée",
+      "coordonnees" : "9.60566765,-13.65098598"
+    }
+  ]
+}
