@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Andong Project</string>
-    <string name="title_activity_envoyer">Andong Project - lastposition</string>
-    <string name="title_activity_recevoir">Andong Project - Aller à</string>
+    <string name="title_activity_envoyer">Andong Project - 내위치</string>
+    <string name="title_activity_recevoir">Andong Project - 지도</string>
     <string name="title_activity_lieux_important">Andong Project - 안동맛집</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_contact">Andong Project - Contact</string>
+    <string name="title_activity_contact">Andong Project - 연락</string>
     <string name="title_activity_aide">Andong Project</string>
 
 </resources>
