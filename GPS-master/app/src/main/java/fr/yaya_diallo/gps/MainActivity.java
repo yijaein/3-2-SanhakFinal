@@ -35,6 +35,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //로딩화면
+        Intent intent1 = new Intent(this,Splash_Activity.class);
+        startActivity(intent1);
+
+
         gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(new CustomAndroidGridViewAdapter(this));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
