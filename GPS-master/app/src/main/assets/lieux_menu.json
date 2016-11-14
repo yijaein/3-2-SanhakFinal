@@ -2,9 +2,9 @@
   "menus": [
     {
       "id":"presidence",
-      "title": "Présidence de la République",
-      "image" : "sekoutoureyah",
-      "description" : "Le palais Sékoutoureyah",
+      "title": "역동서원",
+      "image" : "lecturehall",
+      "description" : "역동서원",
       "coordonnees" : "9.5089342,-13.7152004"
     },
     {

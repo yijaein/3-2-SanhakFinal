@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="cliquez pour plus d'options"
+        android:text="눌러주세요"
         android:id="@+id/textView_receivegps"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20px"/>

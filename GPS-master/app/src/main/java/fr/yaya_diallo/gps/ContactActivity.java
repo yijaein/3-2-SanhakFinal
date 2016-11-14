@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ContactActivity extends AppCompatActivity {
+// 연락버튼  누르면 나옴
+
 
     private ListView maListView;
 

@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 public class AideActivity extends AppCompatActivity {
-
+// ? 버튼 눌렀을 때 나오는 페이지
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +17,10 @@ public class AideActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.aideview);
 
         String html = "<html><body>" +
-                "<strong>Comment ça marche ?</strong><br/><p>Kiraah est une application qui vous permet d'aller d'un endroit &agrave; un autre &agrave; l'aide de vos coordonn&eacute;es GPS.</p>" +
-                "<p>L'application comprend quatre parties :<br/><br/>" +
-                "1 - <u>Ma position</u> : Cette partie vous permet d'afficher vos coordonn&eacute;es GPS (Vous devez pour cela activer votre GPS)<br/>" +
-                "2 - <u>Envoyer mes coordonn&eacute;es</u> : cette seconde partie vous permet d'envoyer vos coordonn&eacute;es GPS &agrave; une personne &agrave; partir de SMS (prix d'un sms - v&eacute;rifiez le tarif avec votre op&eacute;rateur)<br/>" +
+                "<strong>사용방법</strong><br/><p>이 어플리케이션은 위치기반 서비스를 이용하였습니다. 이 어플리케이션은안동에 맛집이나, 여행지의 위치를 알려주는 어플리케이션입니다.</p>" +
+                "<p>이 어플리케이션은 4부분으로 이루어져 있습니다. :<br/><br/>" +
+                "1 - <u>내 위치</u> : 이 부분은 너의 위치를 자세하게 볼 수 있다.(GPS를 켜)<br/>" +
+                "2 - <u>응 도움말</u> : cette seconde partie vous permet d'envoyer vos coordonn&eacute;es GPS &agrave; une personne &agrave; partir de SMS (prix d'un sms - v&eacute;rifiez le tarif avec votre op&eacute;rateur)<br/>" +
                 "3 - <u>Aller &agrave;...</u> : Vous affiche l'ensemble des coordonn&eacute;es GPS que vous avez re&ccedil;u et vous permet d'aller &agrave; une adresse donn&eacute;e.<br/>" +
                 "4 - <u>Les lieux importants</u> : Cette derni&egrave;re partie vous permet de rejoindre rapidement les lieux les plus importants et les plus tendances en Guin&eacute;e.<br/>" +
                 "</p><br/>" +

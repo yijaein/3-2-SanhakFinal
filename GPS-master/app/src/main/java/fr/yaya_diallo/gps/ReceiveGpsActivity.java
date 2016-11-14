@@ -34,6 +34,15 @@ import android.widget.TwoLineListItem;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+
+
+/*
+찾아가기 기능
+
+
+
+ */
 public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterView.OnItemClickListener, LoaderManager.LoaderCallbacks {
 
     private final String TAG = ReceiveGpsActivity.class.getName();
@@ -65,7 +74,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
         }
         if(gpsReceives.size() == 0 )
         {
-            textView.setText("Vous n'avez pas reçu de coordonnées GPS");
+            textView.setText("GPS정보를 받지 못했습니다.");
         }
         arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_2,gpsReceives){
             @Override
@@ -132,7 +141,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
         int hasReceiveSMSPermission = ContextCompat.checkSelfPermission(ReceiveGpsActivity.this, Manifest.permission.READ_SMS);
         if (hasReceiveSMSPermission != PackageManager.PERMISSION_GRANTED) {
             if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_SMS)) {
-                Utils.showMessageOKCancel(ReceiveGpsActivity.this, "Vous devez donner l'accès à vos SMS",
+                Utils.showMessageOKCancel(ReceiveGpsActivity.this, "SMS권한을 허가해주세요",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -149,7 +158,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
         int hasContactPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
         if (hasContactPermission != PackageManager.PERMISSION_GRANTED) {
             if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
-                Utils.showMessageOKCancel(ReceiveGpsActivity.this,"Vous devez donner accès à vos contacts",
+                Utils.showMessageOKCancel(ReceiveGpsActivity.this,"권한을 허가해줘",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

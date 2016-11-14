@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     GridView gridView;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private static String bestProvider;
-    public static String mapTitle = "Votre position ";
+    public static String mapTitle = "니 위치 ";
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         //로딩화면
         Intent intent1 = new Intent(this,Splash_Activity.class);
         startActivity(intent1);
-
+//   =================================================
 
         gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(new CustomAndroidGridViewAdapter(this));
@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                                     int position, long id) {
                 if(location == null)
                 {
-                    mapTitle = "Votre dernière position ";
+                    mapTitle = "니 위치";
                     location = locationManager.getLastKnownLocation(bestProvider);
                 }
                 if (position == 0) {
                     if (location == null) {
                         AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
-                        adb.setTitle("Désolé votre position est introuvable");
+                        adb.setTitle("죄송합니다. 위치를 찾을 수 없습니다.");
                         adb.setPositiveButton("Ok", null);
                         adb.show();
                     } else {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 }else if (position == 1) {
                     if (location == null) {
                         AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
-                        adb.setTitle("Désolé votre position est introuvable");
+                        adb.setTitle("죄송합니다. 위치를 찾을 수 없습니다.");
                         adb.setPositiveButton("Ok", null);
                         adb.show();
                     } else {
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         int hasGPSPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
         if (hasGPSPermission != PackageManager.PERMISSION_GRANTED) {
             if (!shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Utils.showMessageOKCancel(MainActivity.this, "Vous devez donner accès au GPS pour avoir vos coordonnées",
+                Utils.showMessageOKCancel(MainActivity.this, "GPS를 켜주세요",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -101,16 +101,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             return;
         }
 
+
+        /*Criteria
+        GPS의 RPOVIDER, 기기 상황에 따른 옵션을 설정할 수 있음.
+        해상도가 우수하거나 또는 그렇지 않는 기기에 따른 GPS옵션 설정.
+        Ex) 정확도, 전원소비량 , 고도 사용여부 , 방위데이터, 속도 , 금전적비용
+
+         */
+
         Criteria critere = new Criteria();
-        // Pour indiquer la précision voulue
-        // On peut mettre ACCURACY_FINE pour une haute précision ou ACCURACY_COARSE pour une moins bonne précision
-        critere.setAccuracy(Criteria.ACCURACY_FINE);
-        // Est-ce que le fournisseur peut être payant ?
+
+        critere.setAccuracy(Criteria.ACCURACY_FINE);// 정밀한 위치 정밀도 요구를 나타냄
+
         critere.setCostAllowed(false);
-        // Pour indiquer la consommation d'énergie demandée
-        // Criteria.POWER_HIGH pour une haute consommation, Criteria.POWER_MEDIUM pour une consommation moyenne et Criteria.POWER_LOW pour une basse consommation
-        critere.setPowerRequirement(Criteria.POWER_LOW);
-        // Est-ce que le fournisseur doit être capable de donner une vitesse ?
+
+        critere.setPowerRequirement(Criteria.POWER_LOW);//저전력 조건
+
         critere.setSpeedRequired(true);
         bestProvider = locationManager.getBestProvider(critere,true);
 
@@ -120,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
     @Override
     public void onLocationChanged(Location p_location) {
-        mapTitle = "Votre position ";
+        mapTitle = "당신의 위치";
         location = p_location;
     }
 
@@ -160,4 +166,48 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //두 거리 사이의 위치를 구하는 함수
+
+        public  void CalDistance(double lat1, double lon1, double lat2, double lon2) {
+            double theta,dist;
+            theta =lon1-lon2;
+            dist= Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2))+Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+            dist=Math.acos(dist);
+            dist=rad2deg(dist);
+
+            dist=dist*60*1.1515;
+            dist= dist*1.609344;
+            dist= dist*1000.0;
+
+
+        }
+    private double deg2rad(double deg){
+        return  (double)(deg*Math.PI/(double)180d);
+    }
+    private double rad2deg(double rad){
+        return  (double)(rad*(double)180d/Math.PI);
+    }
+     // 거리 계산
+
+
+    /*
+    distanceB = Caldistance
+     */
+/*
+    double distance;
+
+    Location locationA = new Location("point A");
+
+    locationA.setLatitude(latA);
+    locationA.setLongitude(lngA);
+
+    Location locationB = new Location("point B");
+
+    locationB.setLatitude(latB);
+    LocationB.setLongitude(lngB);
+
+    distance = locationA.distanceTo(locationB);
+*/
+
 }

@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Andong Project</string>
-    <string name="title_activity_envoyer">Andong Project - 내위치</string>
-    <string name="title_activity_recevoir">Andong Project - 지도</string>
-    <string name="title_activity_lieux_important">Andong Project - 안동맛집</string>
+    <string name="app_name">고등어 섹스</string>
+    <string name="title_activity_envoyer">예약하기</string>
+    <string name="title_activity_recevoir">찾아가기</string>
+    <string name="title_activity_lieux_important">가볼만한 곳</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_contact">Andong Project - 연락</string>
-    <string name="title_activity_aide">Andong Project</string>
+    <string name="title_activity_contact">공유하기</string>ㄴ
+    <string name="title_activity_aide">도움말</string>
 
 </resources>

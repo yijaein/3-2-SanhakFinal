@@ -55,7 +55,7 @@ public class SendGpsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder adb = new AlertDialog.Builder(SendGpsActivity.this);
                 if (MainActivity.location == null) {
-                    adb.setTitle("Votre position est introuvable, activer votre GPS");
+                    adb.setTitle("당신의 위치를 찾았습니다, GPS를 켜주세요");
                     adb.setPositiveButton("Ok", null);
                     adb.show();
                 } else {
@@ -70,7 +70,7 @@ public class SendGpsActivity extends AppCompatActivity {
         int hasContactPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
         if (hasContactPermission != PackageManager.PERMISSION_GRANTED) {
             if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
-                Utils.showMessageOKCancel(SendGpsActivity.this, "Vous devez donner accès à votre repertoire de contacts",
+                Utils.showMessageOKCancel(SendGpsActivity.this, "당신은 연락처 디렉토리에 엑세스 권한을 부여해야합니다.",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -135,18 +135,18 @@ public class SendGpsActivity extends AppCompatActivity {
         String lieu = txtLieu.getText().toString();
 
         if(phoneNo == null || phoneNo.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Saisissez un numéro de téléphone", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "식당 전화번호를 적어주세요", Toast.LENGTH_LONG).show();
             return;
         }
         if(lieu == null || lieu.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Donnez un nom à ce lieu", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "이곳에 이름을 적어주세요", Toast.LENGTH_LONG).show();
             return;
         }
         try {
             int hasSendSMSPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
             if (hasSendSMSPermission != PackageManager.PERMISSION_GRANTED) {
                 if (!shouldShowRequestPermissionRationale(Manifest.permission.SEND_SMS)) {
-                    Utils.showMessageOKCancel(SendGpsActivity.this,"Vous devez donner les droits d'envoie de sms",
+                    Utils.showMessageOKCancel(SendGpsActivity.this,"sms를 보낼 수 있도록 허가해주세요.ㄴ",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -163,7 +163,7 @@ public class SendGpsActivity extends AppCompatActivity {
             SendSMS(phoneNo,lieu);
         }
         catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "SMS pas envoyé, essayer encore.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "SMS를 보낼 수 없습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -183,15 +183,15 @@ public class SendGpsActivity extends AppCompatActivity {
             smsManager.sendTextMessage(phoneNo, null, messageToSend, null, null);
         }
 
-        Toast.makeText(getApplicationContext(), "SMS envoyé.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "SMS 전송", Toast.LENGTH_LONG).show();
         Intent mainActivity = new Intent(SendGpsActivity.this, MainActivity.class);
         startActivity(mainActivity);
     }
 
     private String formatMessageToSend() {
-        StringBuilder messageToSend = new StringBuilder("Bonjour, voici les coordonnées GPS de ma position pour me rejoindre :");
+        StringBuilder messageToSend = new StringBuilder("나를 여기에 도달하기 내 위치의 GPS 좌표입니다 :");
         messageToSend.append("\n["+MainActivity.location.getLatitude()+","+MainActivity.location.getLongitude()+"].");
-        messageToSend.append("\nEnvoyé à partir de l'appli. Kiraah http://bit.ly/2e57jqG");
+        messageToSend.append("\n이 어플리케이션에서 보냅니다. http://bit.ly/2e57jqG");
         return messageToSend.toString();
     }
 

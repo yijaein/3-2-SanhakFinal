@@ -14,16 +14,19 @@ import java.util.List;
 /**
  * Created by yayacky on 11/09/2016.
  */
+
+//메인페이지 보이는 아이콘
+
 public class CustomAndroidGridViewAdapter  extends BaseAdapter {
     private Context mContext;
     private List<Item> items = new ArrayList<Item>();
 
     public CustomAndroidGridViewAdapter(Context c) {
         mContext = c;
-        items.add(new Item("Ma position", R.mipmap.aller));
-        items.add(new Item("Envoyer mes coordonnées", R.mipmap.envoie));
-        items.add(new Item("Aller à ...", R.mipmap.google_map));
-        items.add(new Item("Les lieux importants", R.mipmap.voir));
+        items.add(new Item("니 위치", R.mipmap.aller));
+        items.add(new Item("식당예약", R.mipmap.envoie));
+        items.add(new Item("찾아가기...", R.mipmap.google_map));
+        items.add(new Item("가볼만한 곳", R.mipmap.voir));
     }
 
     @Override

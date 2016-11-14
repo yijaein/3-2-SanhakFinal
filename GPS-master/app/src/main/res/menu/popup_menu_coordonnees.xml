@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item_aller_a"
-        android:title="Aller à cette adresse"
+        android:title="이 위치로 이동합니다."
         android:visible="true"
         />
     <item
         android:id="@+id/item_modifier_nom"
-        android:title="Supprimer cette adressse"
+        android:title="개인정보를 지웁니다."
         android:visible="true"/>
 </menu>

@@ -28,16 +28,16 @@ public class Utils {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
 
         if (MainActivity.location == null) {
-            adb.setTitle("Votre position est introuvable, activez votre GPS");
+            adb.setTitle("위치를 찾지 못했습니다,GPS를 켜주세요");
         } else {
             String latitude = MainActivity.location.getLatitude()+"";
             String longitude = MainActivity.location.getLongitude()+"";
-            adb.setTitle("Votre position actuelle :");
+            adb.setTitle("너의 현재 위치 :");
             adb.setMessage("Latitude " + latitude + "\nLongitude " + longitude);
         }
         adb.setPositiveButton("Ok", null);
         if (MainActivity.location != null) {
-            adb.setNegativeButton("Envoyer vos coord.", new DialogInterface.OnClickListener() {
+            adb.setNegativeButton("좌표를 보내세요", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     Intent sendSMS = new Intent(context, SendGpsActivity.class);
