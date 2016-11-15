@@ -45,7 +45,9 @@ public class LieuxMenuAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
+
         View rowView = mInflater.inflate(R.layout.list_item_lieux_menu, viewGroup, false);
+
         TextView titleTextView =
                 (TextView) rowView.findViewById(R.id.mainmenu_list_title);
 
@@ -59,7 +61,9 @@ public class LieuxMenuAdapter extends BaseAdapter {
                 (ImageView) rowView.findViewById(R.id.mainmenu_list_thumbnail);
 
         LieuxMenu mainMenu = (LieuxMenu) getItem(position);
+
         titleTextView.setText(mainMenu.title);
+
         subtitleTextView.setText(mainMenu.description);
         //detailTextView.setText(recipe.label);
         if("sekoutoureyah".equals(mainMenu.imageUrl))

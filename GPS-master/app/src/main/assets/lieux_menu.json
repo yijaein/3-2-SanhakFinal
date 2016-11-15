@@ -5,14 +5,14 @@
       "title": "역동서원",
       "image" : "lecturehall",
       "description" : "역동서원",
-      "coordonnees" : "9.5089342,-13.7152004"
+      "coordonnees" : "36.542099, 128.797705"
     },
     {
       "id":"donka",
       "title": "안동댐",
       "image" : "hopitaux",
       "description" : "안동에 있는 댐 ",
-      "coordonnees" : "9.5349986,-13.6854321"
+      "coordonnees" : "36.584834, 128.773878"
     },
 
     {
@@ -20,7 +20,7 @@
       "title": "하회마을",
       "image" : "aeroport",
       "description" : "경상북도 안동시 풍천면 하회리",
-      "coordonnees" : "9.5569084,-13.6516475"
+      "coordonnees" : "36.538903, 128.519120"
     },
 
     {
@@ -28,35 +28,35 @@
       "title": "도산서원",
       "image" : "palaisdupeuple",
       "description" : "경상북도 안동시 도산면 토계리",
-      "coordonnees" : "9.52094721,-13.69279567"
+      "coordonnees" : "36.736371, 128.846767"
     },
     {
       "id":"ambassadedefrance",
       "title": "하회마을세계박물관",
       "image" : "ambassadedefrance",
       "description" : "경상북도 안동시 풍천면 전서로 206 박물관",
-      "coordonnees" : "9.51119086,-13.71471779"
+      "coordonnees" : "36.549221, 128.527586"
     },
     {
       "id":"ambassadeusa",
       "title": "병산서원",
       "image" : "ambassadeusa",
       "description" : "경상북도 안동시 풍천면 병산리 30",
-      "coordonnees" : "9.59562292,-13.63542323"
+      "coordonnees" : "36.541586, 128.553228"
     },
     {
       "id":"primacenter",
       "title": "봉정사",
       "image" : "primacenter",
       "description" : "경상북도 안동시 서후면 ",
-      "coordonnees" : "9.60268688,-13.63861299"
+      "coordonnees" : "36.637351, 128.641425"
     },
     {
       "id":"plazadiamant",
       "title": "부용대",
       "image" : "plazadiamant",
       "description" : "경상북도 안동시 풍천면 광덕솔밭길 72",
-      "coordonnees" : "9.60566765,-13.65098598"
+      "coordonnees" : "36.545214, 128.518097"
     }
   ]
 }

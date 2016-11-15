@@ -29,7 +29,7 @@ public class ContactActivity extends AppCompatActivity {
         //On déclare la HashMap qui contiendra les informations pour un item
         HashMap<String, String> map = new HashMap<String, String>();
         //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
-        map.put("titre", "www.facebook.com/kiraahgps");
+        map.put("titre", "www.facebook.com/");
         //on insère la référence à l'image (convertit en String car normalement c'est un int) que l'on récupérera dans l'imageView créé dans le fichier affichageitem.xml
         map.put("img", String.valueOf(R.mipmap.facebook));
         //enfin on ajoute cette hashMap dans la arrayList
@@ -38,12 +38,12 @@ public class ContactActivity extends AppCompatActivity {
         //On refait la manip plusieurs fois avec des données différentes pour former les items de notre ListView
 
         map = new HashMap<String, String>();
-        map.put("titre","www.twitter.com/kiraahgps");
+        map.put("titre","www.twitter.com/");
         map.put("img", String.valueOf(R.mipmap.twitter));
         listItem.add(map);
 
         map = new HashMap<String, String>();
-        map.put("titre", "kiraahgps@gmail.com");
+        map.put("titre", "dlwodls0317@gmail.com");
         map.put("img", String.valueOf(R.mipmap.mail));
         listItem.add(map);
 

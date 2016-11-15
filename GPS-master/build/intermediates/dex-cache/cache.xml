@@ -529,7 +529,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="ef711af53acc3de21fa51561be23516a8f7cf8bc">
+        sha1="b780c5ecac3c0d4f7cda55031f2897947ede24d5">
         <dex dex="C:\Users\Jan\Downloads\GPS-master\GPS-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_0c4c99be429e470a2dd53c24611258e4ea4222d4\classes.dex" />
     </item>
     <item
@@ -583,7 +583,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="ba90c29c6eda97d284fdd13a62bca94cc2d8770b">
+        sha1="fd84a521e518f35245375dbf4ed691be9c1cd999">
         <dex dex="C:\Users\Jan\Downloads\GPS-master\GPS-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5495c82fb28b5089fe12419bdbd0d3e01bc07456\classes.dex" />
     </item>
 

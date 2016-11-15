@@ -30,7 +30,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TwoLineListItem;
-
+import android.content.SharedPreferences;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,7 +50,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
     TextView textView;
     ArrayAdapter arrayAdapter;
     ArrayList<GPSReceive> gpsReceives = new ArrayList<>();
-    SharedPreference sharedPreference = new SharedPreference();
+    SharedPreference sharedPreference = new SharedPreference();//sharedPreferences에 저장
     private final int REQUEST_CODE_ASK_PERMISSIONS_READ_CONTACT = 124;
     private final int REQUEST_CODE_ASK_PERMISSIONS_RECEIVE_SMS = 126;
 
@@ -65,7 +65,9 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
 
     private void afficherMessage() {
         Log.d(TAG,"afficherMessage");
-        ArrayList<GPSReceive> favorites = sharedPreference.loadFavorites(this);
+
+        ArrayList<GPSReceive> favorites = sharedPreference.loadFavorites(this);//간단한 정보 저장
+
         final Typeface titleTypeFace = Typeface.createFromAsset(this.getAssets(), "fonts/JosefinSans-Bold.ttf");
         final Typeface subTypeFace =   Typeface.createFromAsset(this.getAssets(), "fonts/JosefinSans-SemiBoldItalic.ttf");
         smsListView = (ListView) findViewById(R.id.SMSList);
@@ -74,14 +76,16 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
         }
         if(gpsReceives.size() == 0 )
         {
-            textView.setText("GPS정보를 받지 못했습니다.");
+            textView.setText("GPS정보를 받지 못했습니다.1");
         }
-        arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_2,gpsReceives){
+
+        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_2,gpsReceives){
             @Override
             public View getView(int position, View convertView, ViewGroup parent){
                 TwoLineListItem row;
                 if(convertView == null){
                     LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
                     row = (TwoLineListItem)inflater.inflate(android.R.layout.simple_list_item_2, null);
                 }else{
                     row = (TwoLineListItem)convertView;
