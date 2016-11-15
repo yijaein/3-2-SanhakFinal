@@ -1,8 +1,6 @@
 package fr.yaya_diallo.gps;
 
-/**
- * Created by yayacky on 04/09/2016.
- */
+
 public class GPSReceive {
 
     private String id;

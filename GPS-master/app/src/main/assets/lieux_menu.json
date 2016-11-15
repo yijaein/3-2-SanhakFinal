@@ -9,53 +9,53 @@
     },
     {
       "id":"donka",
-      "title": "Donka",
+      "title": "안동댐",
       "image" : "hopitaux",
-      "description" : "L'hôpital central",
+      "description" : "안동에 있는 댐 ",
       "coordonnees" : "9.5349986,-13.6854321"
     },
 
     {
       "id":"aeroport",
-      "title": "L'aéroport international",
+      "title": "하회마을",
       "image" : "aeroport",
-      "description" : "Aéroport Conakry Gbessia",
+      "description" : "경상북도 안동시 풍천면 하회리",
       "coordonnees" : "9.5569084,-13.6516475"
     },
 
     {
       "id":"palaisdupeuple",
-      "title": "Le palais du peuple",
+      "title": "도산서원",
       "image" : "palaisdupeuple",
-      "description" : "",
+      "description" : "경상북도 안동시 도산면 토계리",
       "coordonnees" : "9.52094721,-13.69279567"
     },
     {
       "id":"ambassadedefrance",
-      "title": "L'ambassade de France",
+      "title": "하회마을세계박물관",
       "image" : "ambassadedefrance",
-      "description" : "L'ambassade de France en Guinée",
+      "description" : "경상북도 안동시 풍천면 전서로 206 박물관",
       "coordonnees" : "9.51119086,-13.71471779"
     },
     {
       "id":"ambassadeusa",
-      "title": "L'ambassade des Etats-Unis",
+      "title": "병산서원",
       "image" : "ambassadeusa",
-      "description" : "L'ambassade des Etats-Unis en Guinée",
+      "description" : "경상북도 안동시 풍천면 병산리 30",
       "coordonnees" : "9.59562292,-13.63542323"
     },
     {
       "id":"primacenter",
-      "title": "Prima Center",
+      "title": "봉정사",
       "image" : "primacenter",
-      "description" : "Hypermarché de Guinée",
+      "description" : "경상북도 안동시 서후면 ",
       "coordonnees" : "9.60268688,-13.63861299"
     },
     {
       "id":"plazadiamant",
-      "title": "Plaza Diamant",
+      "title": "부용대",
       "image" : "plazadiamant",
-      "description" : "Pôle multifonctionnel en Guinée",
+      "description" : "경상북도 안동시 풍천면 광덕솔밭길 72",
       "coordonnees" : "9.60566765,-13.65098598"
     }
   ]

@@ -11,9 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by yayacky on 11/09/2016.
- */
 
 //메인페이지 보이는 아이콘
 
