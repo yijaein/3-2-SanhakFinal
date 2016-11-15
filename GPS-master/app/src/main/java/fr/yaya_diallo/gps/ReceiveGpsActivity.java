@@ -61,6 +61,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
 
         textView = (TextView) findViewById(R.id.textView_receivegps);
         getSmsInbox(this);
+
     }
 
     private void afficherMessage() {

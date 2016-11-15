@@ -116,13 +116,7 @@ public class SendGpsActivity extends AppCompatActivity {
                         String number = cursor.getString(column);
                         txtphone.setText(number);
 
-                        //TODO à voir si à implementer pour la suite
-                        //String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                        /*if(name != null && !name.equals("")) {
-                            int voiciIndex = messageToSend.indexOf("voici");
-                            messageToSend.replace(0,voiciIndex,"Bonjour "+name+", ");
-                            setTxtMessage();
-                        }*/
+
                     }
                 }
             }
@@ -191,7 +185,7 @@ public class SendGpsActivity extends AppCompatActivity {
     private String formatMessageToSend() {
         StringBuilder messageToSend = new StringBuilder("나를 여기에 도달하기 내 위치의 GPS 좌표입니다 :");
         messageToSend.append("\n["+MainActivity.location.getLatitude()+","+MainActivity.location.getLongitude()+"].");
-        messageToSend.append("\n이 어플리케이션에서 보냅니다. http://bit.ly/2e57jqG");
+        messageToSend.append("\n이 어플리케이션에서 보냅니다. http://bit.ly/2e57jqG");// 구글 플레이스토어
         return messageToSend.toString();
     }
 

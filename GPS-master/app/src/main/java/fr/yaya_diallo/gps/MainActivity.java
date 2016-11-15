@@ -21,7 +21,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
-
+    double actual_distance;//실제거리를 담을 전역변수
+    float[] distance= new float[0];
     private final String TAG = MainActivity.class.getName();
     public static LocationManager locationManager;
     public static Location location;
@@ -122,6 +123,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, pending);
         locationManager.requestLocationUpdates(bestProvider, 60000, 150, this);
+
+        // 거리 계산
+        //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        Location.distanceBetween(PropertyManager.getInstance().getLat(),PropertyManager.getInstance().getLng(),36.542099,128.797705,distance);
+        actual_distance=distance[0];
+        if(actual_distance==50){
+            Intent intent = new Intent(this,Information.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -191,23 +201,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
      // 거리 계산
 
 
-    /*
-    distanceB = Caldistance
-     */
-/*
-    double distance;
 
-    Location locationA = new Location("point A");
-
-    locationA.setLatitude(latA);
-    locationA.setLongitude(lngA);
-
-    Location locationB = new Location("point B");
-
-    locationB.setLatitude(latB);
-    LocationB.setLongitude(lngB);
-
-    distance = locationA.distanceTo(locationB);
-*/
 
 }

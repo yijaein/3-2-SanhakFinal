@@ -2,6 +2,7 @@ package fr.yaya_diallo.gps;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -43,7 +44,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setTrafficEnabled(true);
             mMap.setMyLocationEnabled(true);
             mMap.setBuildingsEnabled(true);
+            //위치
             LatLng position = new LatLng(MainActivity.location.getLatitude(), MainActivity.location.getLongitude());
+
+            //위치정보 저장
+            PropertyManager.getInstance().setLat((float) position.latitude);
+            PropertyManager.getInstance().setLng((float) position.longitude);
+            Log.i("test",""+PropertyManager.getInstance().getLat()+","+PropertyManager.getInstance().getLng());
+
+
+//==================================================================================================
+
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(position);
             markerOptions.title(MainActivity.mapTitle + position);
