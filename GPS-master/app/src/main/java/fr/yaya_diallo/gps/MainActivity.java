@@ -14,11 +14,13 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
     double actual_distance;//실제거리를 담을 전역변수
@@ -126,12 +128,23 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
         // 거리 계산
         //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+/*
         Location.distanceBetween(PropertyManager.getInstance().getLat(),PropertyManager.getInstance().getLng(),36.542099,128.797705,distance);
         actual_distance=distance[0];
-        if(actual_distance==50){
+        //50미터 안에 들어오면 액티비티가 켜진다.
+
+        if(actual_distance<50){
             Intent intent = new Intent(this,Information.class);
             startActivity(intent);
         }
+       //25미터에 들어오면 토스트 메시지가 뜸
+        if(actual_distance<25){
+            Toast toast = Toast.makeText(getApplicationContext(),"근처에 해당 건물에 대한 정보가 있습니다.",Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
+        }
+        */
     }
 
     @Override
