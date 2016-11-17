@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private static String bestProvider;
     public static String mapTitle = "니 위치 ";
+    double distance1;
+
+
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     public void onLocationChanged(Location p_location) {
         mapTitle = "당신의 위치";
         location = p_location;
+
     }
 
     @Override

@@ -87,7 +87,7 @@ public class ReceiveGpsActivity extends AppCompatActivity  implements AdapterVie
                 if(convertView == null){
                     LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                    row = (TwoLineListItem)inflater.inflate(android.R.layout.simple_list_item_2, null);
+                    row = (TwoLineListItem)inflater.inflate(android.R.layout.simple_list_item_2, null,false);
                 }else{
                     row = (TwoLineListItem)convertView;
                 }
