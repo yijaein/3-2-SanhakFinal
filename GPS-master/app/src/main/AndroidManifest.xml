@@ -85,9 +85,6 @@
 
             ></activity>
 
-        <activity android:name=".Distance"
-            ></activity>
-
     </application>
     <service android:name = ".NotificationService"
         android:enabled="true"/>

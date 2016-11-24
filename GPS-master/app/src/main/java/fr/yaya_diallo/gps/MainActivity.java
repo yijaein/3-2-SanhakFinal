@@ -66,40 +66,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++==================================================================
 
 
-                    Location locationA = new Location("MyLocation");
 
-                    locationA.setLatitude(location.getLatitude());
-                    locationA.setLongitude(location.getLongitude());
-
-                    Location locationB = new Location("역동서원 ");
-
-                    locationB.setLatitude(36.542099);
-                    locationB.setLongitude(128.797705);
-
-                    distance = locationA.distanceTo(locationB);
-                    meter = Double.toString(distance);
-
-                    Log.v("알림","거리계산"+distance);
                     Toast.makeText(MainActivity.this,"니 위치 "+location.getLatitude()+location.getLongitude(),Toast.LENGTH_LONG).show();
-
-                    if(distance<200){
-                    Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
-
-                    if(distance<150){
-                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
-
-                    if(distance<100){
-                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
-
-                    if(distance<50){
-                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
-
-                    if(distance<30){
-                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
-
-
-                    if(distance<10){
-                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
 
 
 
@@ -192,27 +160,54 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     @Override
     public void onLocationChanged(Location p_location) {
         mapTitle = "당신의 위치";
-        location = p_location;
+       location= p_location;
+
+        distance = p_location.distanceTo(getPointLocation());
+        Log.i("알림1","거리"+distance);
+        Toast.makeText(MainActivity.this, "거리:"+distance, Toast.LENGTH_LONG).show();
+
+        if(distance<50)
+        {
+            PendingIntent activity =null;
+            Intent intent = null;
+            intent = new Intent(MainActivity.this.getApplicationContext(),Information.class);
+
+            activity = PendingIntent.getActivity(MainActivity.this.getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+            NotificationManager nm = (NotificationManager)MainActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+            if (Build.VERSION.SDK_INT < 16) {
+                Notification n  = new Notification.Builder(this)
+                        .setContentTitle("New mail from " + "test@gmail.com")
+                        .setContentText("Subject")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentIntent(activity)
+                        .setAutoCancel(true).getNotification();
+
+                n.defaults = Notification.DEFAULT_SOUND;
+
+                NotificationManager notificationManager =
+                        (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(0, n);
+            } else {
+                Notification n  = new Notification.Builder(this)
+                        .setContentTitle("주변에 식당이 있어용 " + "눌러서 정보확인")
+                        .setContentText("눌러봐")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentIntent(activity)
+                        .setAutoCancel(true).build();
+                n.defaults = Notification.DEFAULT_SOUND;
+                NotificationManager notificationManager =
+                        (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(0, n);
+                Toast.makeText(MainActivity.this, "뜸?", Toast.LENGTH_LONG).show();
+            }
+
+        }
 
 
         ////////=================================================================================================================
 
-        if (p_location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
-        //Gps 위치제공자에 의한 위치변화. 오차범위가 좁다.
-            double longitude = location.getLongitude();    //경도
-            double latitude = location.getLatitude();         //위도
-            float accuracy = location.getAccuracy();        //신뢰도
-            Toast.makeText(MainActivity.this,"니 위치 "+longitude+latitude+accuracy,Toast.LENGTH_LONG).show();
-            Log.v("알림3","거리계산"+location);
-            Log.v("알림1","거리계산"+p_location);
-            Log.v("알림4","거리계산"+longitude);
-            Log.v("알림5","거리계산"+accuracy);
 
-        }
-        else {
-        //Network 위치제공자에 의한 위치변화
-        //Network 위치는 Gps에 비해 정확도가 많이 떨어진다.
-        }
 //==========================================================================
 
 
@@ -255,6 +250,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //위치 정보
+    private Location getPointLocation(){
+        Location point = new Location("point");
+        point.setLatitude(36.544902);
+        point.setLongitude(128.793711);
+        return point;
+
+    }
+
 
 
 
