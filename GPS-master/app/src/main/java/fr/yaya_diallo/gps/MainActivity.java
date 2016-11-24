@@ -2,6 +2,9 @@ package fr.yaya_diallo.gps;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +17,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,8 +27,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
-    double actual_distance;//실제거리를 담을 전역변수
-    float[] distance= new float[0];
+
     private final String TAG = MainActivity.class.getName();
     public static LocationManager locationManager;
     public static Location location;
@@ -32,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private static String bestProvider;
     public static String mapTitle = "니 위치 ";
-    double distance1;
+    double distance;
+    String meter;
 
 
 
@@ -55,8 +59,56 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 if(location == null)
                 {
                     mapTitle = "니 위치";
-                    location = locationManager.getLastKnownLocation(bestProvider);
+
+                    location = locationManager.getLastKnownLocation(bestProvider);// 맵 자동 갱신
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++==================================================================
+
+
+                    Location locationA = new Location("MyLocation");
+
+                    locationA.setLatitude(location.getLatitude());
+                    locationA.setLongitude(location.getLongitude());
+
+                    Location locationB = new Location("역동서원 ");
+
+                    locationB.setLatitude(36.542099);
+                    locationB.setLongitude(128.797705);
+
+                    distance = locationA.distanceTo(locationB);
+                    meter = Double.toString(distance);
+
+                    Log.v("알림","거리계산"+distance);
+                    Toast.makeText(MainActivity.this,"니 위치 "+location.getLatitude()+location.getLongitude(),Toast.LENGTH_LONG).show();
+
+                    if(distance<200){
+                    Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+                    if(distance<150){
+                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+                    if(distance<100){
+                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+                    if(distance<50){
+                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+                    if(distance<30){
+                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+
+                    if(distance<10){
+                        Toast.makeText(MainActivity.this,"역동서원까지 거리는"+distance+"남았습니다.",Toast.LENGTH_LONG).show();}
+
+
+
                 }
+
+
+
+
+
                 if (position == 0) {
                     if (location == null) {
                         AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
@@ -127,35 +179,45 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         bestProvider = locationManager.getBestProvider(critere,true);
 
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, pending);
-        locationManager.requestLocationUpdates(bestProvider, 60000, 150, this);
+        locationManager.requestLocationUpdates(bestProvider, 6000, 150, this);
 
-        // 거리 계산
-        //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-/*
-        Location.distanceBetween(PropertyManager.getInstance().getLat(),PropertyManager.getInstance().getLng(),36.542099,128.797705,distance);
-        actual_distance=distance[0];
-        //50미터 안에 들어오면 액티비티가 켜진다.
 
-        if(actual_distance<50){
-            Intent intent = new Intent(this,Information.class);
-            startActivity(intent);
-        }
-       //25미터에 들어오면 토스트 메시지가 뜸
-        if(actual_distance<25){
-            Toast toast = Toast.makeText(getApplicationContext(),"근처에 해당 건물에 대한 정보가 있습니다.",Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER,0,0);
-            toast.show();
-        }
-        */
+
     }
+
+
+
 
     @Override
     public void onLocationChanged(Location p_location) {
         mapTitle = "당신의 위치";
         location = p_location;
 
+
+        ////////=================================================================================================================
+
+        if (p_location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
+        //Gps 위치제공자에 의한 위치변화. 오차범위가 좁다.
+            double longitude = location.getLongitude();    //경도
+            double latitude = location.getLatitude();         //위도
+            float accuracy = location.getAccuracy();        //신뢰도
+            Toast.makeText(MainActivity.this,"니 위치 "+longitude+latitude+accuracy,Toast.LENGTH_LONG).show();
+            Log.v("알림3","거리계산"+location);
+            Log.v("알림1","거리계산"+p_location);
+            Log.v("알림4","거리계산"+longitude);
+            Log.v("알림5","거리계산"+accuracy);
+
+        }
+        else {
+        //Network 위치제공자에 의한 위치변화
+        //Network 위치는 Gps에 비해 정확도가 많이 떨어진다.
+        }
+//==========================================================================
+
+
     }
+
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle bundle) {
@@ -194,28 +256,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         }
     }
 
-    //두 거리 사이의 위치를 구하는 함수
 
-        public  void CalDistance(double lat1, double lon1, double lat2, double lon2) {
-            double theta,dist;
-            theta =lon1-lon2;
-            dist= Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2))+Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-            dist=Math.acos(dist);
-            dist=rad2deg(dist);
-
-            dist=dist*60*1.1515;
-            dist= dist*1.609344;
-            dist= dist*1000.0;
-
-
-        }
-    private double deg2rad(double deg){
-        return  (double)(deg*Math.PI/(double)180d);
-    }
-    private double rad2deg(double rad){
-        return  (double)(rad*(double)180d/Math.PI);
-    }
-     // 거리 계산
 
 
 

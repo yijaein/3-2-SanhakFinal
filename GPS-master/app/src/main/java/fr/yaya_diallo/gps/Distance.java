@@ -1,6 +1,10 @@
 package fr.yaya_diallo.gps;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -36,13 +40,22 @@ public class Distance extends Activity {
 
         Log.v("알림","거리계산"+distance);
 
-        if(distance<150){
+        if(distance<200){
             Toast.makeText(this,"메시지 입력",Toast.LENGTH_LONG).show();
             Log.d("알림","거리계산"+distance);
-            Intent intent = new Intent(getApplicationContext(),Information.class);
-            startActivity(intent);
+            NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent intent = new Intent(this,MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            Notification.Builder builder = new Notification.Builder(this);
+            builder.setTicker("알람 설명");
+            builder.setContentText("알람 내용");
+            builder.setContentTitle("알람 제목");
+
 
 
         }
     }
+
+
+
 }
